@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>S3 지하철 무정차 시스템</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/metro.css">
+        <link rel="stylesheet" href="./css/train.css">
+        <link rel="shortcut icon" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/favicon.ico">
+        <script src="./js/index.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script src="./js/metro.js"></script>
+        <script src="./js/jquery.subwayMap-0.5.3.js"></script>
+
+        <!-- <script>
+            function popup()
+            {
+                window.open("popup.html", "popup", "width=430,height=530,history=no,resizable=no,status=no,scrollbars=yes,menubar=no")
+            }
+    
+                // window.open("url","새 창 이름","새 창 옵션")
+                // window.open("팝업될 문서 경로","팝업될 문서 이름","옵션")
+                // 문서 이름을 안쓰려면 ("url","","옵션")s
+    
+            </script> -->
+        
+            <script type="text/javascript">
+                function draw(){
+                  var canvas = document.getElementById('tutorial');
+                  if (canvas.getContext){
+                    var ctx = canvas.getContext('2d');
+
+                    var circle = new Path2D();
+            circle.moveTo(125, 35);
+             circle.arc(19,79,62,118 * Math.PI);
+                    
+             ctx.fill(circle);
+                    }
+                }
+                </script>
+        </head>
+
+        <body onload="popup()">
+            <div id="header">
+                <img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/logo.png"></div>
+                <div id="navigator"><div id="nav-mode-container"></div>
+                <div id="nav-additional-container"><img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/welcome.png">
+                </div>
+            </div>
+            <div id="map-container">
+                <div id="line-selector-container"><button class="line-selector" id="line-1" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">1호선</button>
+                    <button class="line-selector" id="line-2" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">2호선</button>
+                    <button class="line-selector" id="line-3" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">3호선</button>
+                    <button class="line-selector" id="line-4" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">4호선</button>
+                    <button class="line-selector" id="line-5" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">5호선</button>
+                    <button class="line-selector" id="line-6" style="background-color:rgb(197, 92, 29)" onclick="selectLine(this);">6호선</button>
+                    <button class="line-selector" id="line-7" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">7호선</button>
+                    <button class="line-selector" id="line-8" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">8호선</button>
+                    <button class="line-selector" id="line-9" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">9호선</button></div>
+                    
+            <div id="metro" class ="table">
+                <body>
+                    <img id="Image-Maps-Com-image-maps-2022-11-27-025354" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/metro.png" usemap="#image-maps-2022-11-27-025354" alt="" />
+                    <map name="image-maps-2022-11-27-025354" id="ImageMapsCom-image-maps-2022-11-27-025354">
+                    <area  class=area1 alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="91,11,134,50"  target="_self"      />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="19,79,62,118" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="164,78,207,117" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="49,110,92,149" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="137,111,180,150" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="93,151,136,190" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="95,208,138,247" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="94,264,137,303" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="94,318,137,357" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="94,378,137,417" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="95,422,138,461" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="112,480,155,519" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="154,507,197,546" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="191,530,234,569" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="242,546,285,585" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="297,545,340,584" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="352,545,395,584" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="406,545,449,584" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="479,546,522,585" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="544,543,587,582" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="659,540,702,579" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="606,544,649,583" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="726,542,769,581" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="782,544,825,583" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="781,436,824,475" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="863,350,906,389" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="864,264,907,303" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="862,209,905,248" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="863,162,906,201" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="893,128,936,167" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="953,130,996,169" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1015,131,1058,170" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1089,128,1132,167" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1159,128,1202,167" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1215,131,1258,170" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1298,129,1341,168" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1356,131,1399,170" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1393,161,1436,200" style="outline:none;" target="_self"     />
+                    <area  alt="" title="" href="http://www.image-maps.com/" shape="rect" coords="1429,189,1472,228" style="outline:none;" target="_self"     />
+                    <area shape="rect" coords="1498,598,1500,600" alt="Image Map" style="outline:none;" title="Image Map" href="https://www.image-maps.com/" />
+                    </map>
+                
+                </body>
+                    </div>
+                </div>
+            </body>
+
+            
+            </html>

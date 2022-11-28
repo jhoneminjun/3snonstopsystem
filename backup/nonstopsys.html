@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>S3 지하철 무정차 시스템</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/metro.css">
+        <link rel="stylesheet" href="./css/train.css">
+        <link rel="shortcut icon" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/favicon.ico">
+        <script src="./js/index.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script src="./js/metro.js"></script>
+        <script src="./js/jquery.subwayMap-0.5.3.js"></script>
+
+        <script>
+            function popup()
+            {
+                window.open("popup.html", "popup", "width=430,height=530,history=no,resizable=no,status=no,scrollbars=yes,menubar=no")
+            }
+    
+                // window.open("url","새 창 이름","새 창 옵션")
+                // window.open("팝업될 문서 경로","팝업될 문서 이름","옵션")
+                // 문서 이름을 안쓰려면 ("url","","옵션")s
+    
+            </script>
+
+        </head>
+        <body onload="popup()">
+            <div id="header">
+                <img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/logo.png"></div>
+                <div id="navigator"><div id="nav-mode-container"></div>
+                <div id="nav-additional-container"><img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/welcome.png">
+                </div>
+            </div>
+            <div id="map-container">
+                <div id="line-selector-container"><button class="line-selector" id="line-1" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">1호선</button>
+                    <button class="line-selector" id="line-2" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">2호선</button>
+                    <button class="line-selector" id="line-3" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">3호선</button>
+                    <button class="line-selector" id="line-4" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">4호선</button>
+                    <button class="line-selector" id="line-5" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">5호선</button>
+                    <button class="line-selector" id="line-6" style="background-color:rgb(197, 92, 29)" onclick="selectLine(this);">6호선</button>
+                    <button class="line-selector" id="line-7" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">7호선</button>
+                    <button class="line-selector" id="line-8" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">8호선</button>
+                    <button class="line-selector" id="line-9" style="background-color:rgb(242, 242, 242)" onclick="selectLine(this);">9호선</button></div>
+                    
+            <div id="metro" class ="table">
+                <body>
+                    <div class="subway-map" data-columns="40" data-rows="40" data-cellSize="50.5" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="false" data-lineWidth="13">
+                        <ul data-color="#FFA500">          
+                            <li data-coords="3,3" data-marker="interchange">역촌</li>
+                            <li data-coords="4,2" data-dir="E" data-marker="interchange">불광</a></li>
+                            <li data-coords="3,1" data-dir="N" data-marker="interchange">독바위</a></li>
+                            <li data-coords="2,2" data-dir="W" data-marker="interchange">연신내</a></li>
+                            <li data-coords="2,3" data-marker="interchange">구산</a></li>
+                            <li data-coords="2,4" data-marker="interchange">응암</a></li>
+                            <li data-coords="2,5" data-marker="interchange">새절</a></li>
+                            <li data-coords="2,6" data-marker="interchange">증산</a></li>
+                            <li data-coords="2,7" data-marker="interchange">디지털미디어시티</a></li>
+                            <li data-coords="2,8.5" data-marker="interchange">월드컵경기장</a></li>
+                            <li data-coords="2,9.5" data-marker="interchange">마포구청</a></li>
+                            <li data-coords="2,10.5" data-marker="interchange">망원</a></li>
+                            <li data-coords="3,11.5" data-dir="S" data-marker="interchange">합정</a></li>
+                            <li data-coords="4,11.5" data-marker="interchange">상수</a></li>
+                            <li data-coords="5,11.5" data-marker="interchange">광흥창</a></li>
+                            <li data-coords="6,11.5" data-marker="interchange">대흥</a></li>
+                            <li data-coords="7,11.5" data-marker="interchange">공덕</a></li>
+                            <li data-coords="8.5,11.5" data-marker="interchange">효창공원앞</a></li>
+                            <li data-coords="10,11.5" data-marker="interchange">삼각지</a></li>
+                            <li data-coords="12,11.5" data-marker="interchange">녹새청(용산구청)</a></li>
+                            <li data-coords="14,11.5" data-marker="interchange">이태원</a></li>
+                            <li data-coords="15,10.5" data-dir="E" data-marker="interchange">한강진</a></li>
+                            <li data-coords="15,9" data-marker="interchange">버티고개</a></li>
+                            <li data-coords="15,8" data-marker="interchange">약수</a></li>
+                            <li data-coords="15,7" data-marker="interchange">청구</a></li>
+                            <li data-coords="15,6" data-marker="interchange">신당</a></li>
+                            <li data-coords="15,5" data-marker="interchange">동묘앞</a></li>
+                            <li data-coords="16,4" data-marker="interchange">창신</a></li>
+                            <li data-coords="17,4" data-marker="interchange">보훈</a></li>
+                            <li data-coords="18,4" data-marker="interchange">안암</a></li>
+                            <li data-coords="19,4" data-marker="interchange">고려대</a></li>
+                            <li data-coords="20,4" data-marker="interchange">월곡</a></li>
+                            <li data-coords="21,4" data-marker="interchange">상월곡</a></li>
+                            <li data-coords="22,4" data-marker="interchange">돌곶이</a></li>
+                            <li data-coords="23,4" data-marker="interchange">석계</a></li>
+                            <li data-coords="24.5,4" data-marker="interchange">태릉 입구</a></li>
+                            <li data-coords="26,4" data-marker="interchange">화랑대</a></li>
+                            <li data-coords="27,4" data-marker="interchange">봉화산</a></li>
+                            <li data-coords="28,4" data-marker="interchange">신내역</a></li>
+                        </ul>
+                
+                    </div>
+                    <script type="text/javascript">
+                        $(".subway-map").subwayMap({ debug: true });</script>
+                </body>
+                    </div>
+                </div>
+            </body>
+
+            
+            </html>
