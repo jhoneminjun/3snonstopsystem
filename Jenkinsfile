@@ -61,7 +61,7 @@ EOF"""
             //sh "cat /var/lib/jenkins/workspace/${env.JOB_NAME}/yaml/deploy.yaml"
                         withCredentials([gitUsernamePassword(credentialsId: 'github')]) {
                             sh """
-                            git add deploy.yaml
+                            git add nonstop.yaml
                             git commit -m "Deploy ${env.JOB_NAME} ${env.BUILD_NUMBER}"
                             git push https://github.com/jhoneminjun/argocd.git
                             """
