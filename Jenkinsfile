@@ -34,7 +34,7 @@ spec:
     app: nonstop
   type: NodePort
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 3003
       protocol: TCP
 ---
