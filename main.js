@@ -25,7 +25,7 @@ app.use(express.static('public'));
 const { mainModule } = require('process');
 var db = require('./public/pool/db.js');
 
-app.get("/", function(req,res){
+app.get("/nonstop_main/nonstopsys", function(req,res){
     var sql = "SELECT `station_name` from `subway_nonstop`;";
     db.query(
       sql, function(err,results,field){
