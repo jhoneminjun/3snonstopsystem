@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+.w-btn-blue-outline {
+    border: 3px solid #013c6d;
+    color: #424242;
+}
+
+.w-btn-outline1 {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family:  'Nanum Gothic', sans-serif;
+    box-shadow: 0 0px 10px rgba(0, 53, 83, 0.2);
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.25s;
+    font-size: 25px;
+    margin-left: 22px;
+    letter-spacing: -0.5px;
+}
+
+.w-btn-outline2 {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family:  'Nanum Gothic', sans-serif;
+    box-shadow: 0 0px 10px rgba(0, 53, 83, 0.2);
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.25s;
+    font-size: 25px;
+    letter-spacing: -0.5px;
+}
+
+
+.w-btn-blue-outline:hover {
+    background-color: #013c6d;
+    color: #ffffff;
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}

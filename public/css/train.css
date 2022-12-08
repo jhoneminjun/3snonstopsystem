@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body
+{
+    font-family: 'Nanum Gothic';
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+/* The main DIV for the map */
+.map{
+    /* margin: 130px 0px 50px 300px; */
+}
+
+.subway-map
+{
+    width: 100px;
+    height:100px;
+    background-color: white;
+}
+
+/* Text labels */
+.text
+{
+    position: relative;
+    text-decoration: none;
+    color: rgb(94, 94, 94);
+}
+
+#legend
+{
+    float: left;
+    width: 250px;
+    height:400px;
+}
+
+#legend div
+{
+    height: 25px;
+}
+
+#legend span
+{
+    margin: 5px 5px 5px 0;
+}
+.subway-map span
+{
+    margin: 50px 5px 5px 0px;
+}

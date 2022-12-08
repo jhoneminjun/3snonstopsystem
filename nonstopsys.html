@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>S3 지하철 무정차 시스템</title>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/metro.css">
+    <link rel="stylesheet" href="/css/train.css">
+    <link rel="shortcut icon" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/favicon.ico">
+    <script src="/js/index.js"></script>
+    <!-- <script src="./js/canvas.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="/js/metro.js"></script>
+    <script src="/js/jquery.subwayMap-0.5.3.js"></script>
+
+    <script>
+        function btn(){
+            alert('현재 서비스 준비 중 입니다.');
+        }
+        </script>
+
+
+    <!-- <script>
+            function popup()
+            {
+                window.open("popup.html", "popup", "width=430,height=530,history=no,resizable=no,status=no,scrollbars=yes,menubar=no")
+            }
+    
+                // window.open("url","새 창 이름","새 창 옵션")
+                // window.open("팝업될 문서 경로","팝업될 문서 이름","옵션")
+                // 문서 이름을 안쓰려면 ("url","","옵션")s
+    
+            </script> -->
+
+
+</head>
+
+<body onload="popup()">
+    <div id="header">
+        <img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/logo.png">
+    </div>
+    <div id="navigator">
+        <div id="nav-mode-container"></div>
+        <div id="nav-additional-container"><img 
+                src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/welcome.png">
+        </div>
+    </div>
+    <div id="map-container">
+        <div id="line-selector-container">
+            <button class="line-selector" id="line-1"style="background-color:rgb(242, 242, 242)" 
+                onclick="javascript:btn()">1호선</button>
+            <button class="line-selector" id="line-2" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">2호선</button>
+            <button class="line-selector" id="line-3" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">3호선</button>
+            <button class="line-selector" id="line-4" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">4호선</button>
+            <button class="line-selector" id="line-5" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">5호선</button>
+            <button class="line-selector" id="line-6" style="background-color:rgb(197, 92, 29)"
+                onclick="selectLine(this);">6호선</button>
+            <button class="line-selector" id="line-7" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">7호선</button>
+            <button class="line-selector" id="line-8" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">8호선</button>
+            <button class="line-selector" id="line-9" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">9호선</button>
+        </div>
+
+        <div id="metro" class="table">
+
+            <body>
+                <div>
+                    <div style="position: absolute;">
+                        <div id=1 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=2 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=3 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=4 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=5 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=6 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=7 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=8 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=9 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=10 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=11 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=12 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=13 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=14 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=15 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=16 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=17 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=18 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=19 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=20 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=21 style="position: relative;"><img src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/21.gif"></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=22 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=23 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=24 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=25 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=26 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=27 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=28 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=29 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=30 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=31 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=32 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=33 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=34 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=35 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=36 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=37 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=38 style="position: relative;"><img src=""></img></div>
+                    </div>
+                    <div style="position: absolute;">
+                        <div id=39 style="position: relative;"><img src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/39.gif"></img></div>
+                    </div>
+                    
+                    <img src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/metro2.png"></img>
+                </div>
+            </body>
+        </div>
+    </div>
+</body>
+
+
+</html>

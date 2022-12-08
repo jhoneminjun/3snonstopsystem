@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>S3 지하철 무정차 시스템</title>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/css/button.css">
+    <link rel="stylesheet" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/css/index.css">
+    <link rel="stylesheet" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/css/metro.css">
+    <link rel="stylesheet" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/css/train.css">
+    <link rel="shortcut icon" href="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/favicon.ico">
+    <!-- <script src="../js/index.js"></script> -->
+    <!-- <script src="./js/canvas.js"></script> -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="../js/metro.js"></script> -->
+    <!-- <script src="../js/jquery.subwayMap-0.5.3.js"></script> -->
+    <script src="../js/alert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+        function btn() {
+            alert('현재 서비스 준비 중 입니다.');
+        }
+        
+    </script>
+
+
+    <!-- <script>
+            function popup()
+            {
+                window.open("popup.html", "popup", "width=430,height=530,history=no,resizable=no,status=no,scrollbars=yes,menubar=no")
+            }
+    
+                // window.open("url","새 창 이름","새 창 옵션")
+                // window.open("팝업될 문서 경로","팝업될 문서 이름","옵션")
+                // 문서 이름을 안쓰려면 ("url","","옵션")s
+    
+            </script> -->
+
+
+</head>
+
+<body onload="popup()">
+    <div id="header">
+        <img class="image" src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/logo.png">
+    </div>
+    <div id="navigator">
+        <div id="nav-mode-container"></div>
+        <div id="nav-additional-container"><img src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/welcome.png"></div>
+        <div id="bb">
+            <button class="w-btn-outline1 w-btn-blue-outline" type="button" onClick="window.location.reload()">
+                새로고침
+            </button>
+            <a href="http://www.smartsubwaysystem.cloud/board" target="_blank">
+                <button class="w-btn-outline2 w-btn-blue-outline" type="button">
+                    전광판
+                </button></a>
+        </div>
+    </div>
+    <div id="map-container">
+        <div id="line-selector-container">
+            <button class="line-selector" id="line-1" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">1호선</button>
+            <button class="line-selector" id="line-2" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">2호선</button>
+            <button class="line-selector" id="line-3" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">3호선</button>
+            <button class="line-selector" id="line-4" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">4호선</button>
+            <button class="line-selector" id="line-5" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">5호선</button>
+            <button class="line-selector" id="line-6" style="background-color:rgb(197, 92, 29)"
+                onclick="selectLine(this);">6호선</button>
+            <button class="line-selector" id="line-7" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">7호선</button>
+            <button class="line-selector" id="line-8" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">8호선</button>
+            <button class="line-selector" id="line-9" style="background-color:rgb(242, 242, 242)"
+                onclick="javascript:btn()">9호선</button>
+        </div>
+
+        <div id="metro" class="table">
+
+            <body>
+                    <div>
+                        <% for(var i = 0; i < data.length; i++) { %>
+                            <div style="position: absolute;">
+                                <div id=1 style="position: relative;"><img usemap="#image-map" src="<% if (data[i].station_name === "구산" ) { %>
+                                    https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/1.gif <% } %> %>">
+                                    <map name="image-map1">
+                                        <area alt="구산" coords="80,148,112,174" shape="rect" onclick=btn2();>
+                                    </map></div>
+                            </div>
+                            <div style="position: absolute;">
+                                <div id=2 style="position: relative;"><img usemap="#image-map2" src="<% if (data[i].station_name === "연신내") {
+                                        %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/2.gif <% } %>">
+                                        <map name="image-map2">
+                                            <area alt="연신내" coords="80,99,112,125" shape="rect" onclick=btn2();>
+                                        </map></div>
+                                </div>
+                                <div style="position: absolute;">
+                                  <div id=3 style="position: relative;"><img usemap="#image-map3" src="<% if (data[i].station_name === "독바위") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/3.gif <% } %>">
+                                    <map name="image-map3">
+                                        <area alt="독바위" coords="121,38,153,64" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=4 style="position: relative;"><img usemap="#image-map4" src="<% if (data[i].station_name === "불광") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/4.gif <% } %>">
+                                    <map name="image-ma4">
+                                        <area alt="불광" coords="162,100,194,126" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=5 style="position: relative;"><img usemap="#image-map5" src="<% if (data[i].station_name === "역촌") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/5.gif <% } %>">
+                                    <map name="image-map5">
+                                        <area alt="역촌" coords="121,143,153,169" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=6 style="position: relative;"><img usemap="#image-map6" src="<% if (data[i].station_name === "응암") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/6.gif <% } %>">
+                                    <map name="image-map6">
+                                        <area alt="응암" coords="81,192,113,218" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=7 style="position: relative;"><img usemap="#image-map7" src="<% if (data[i].station_name === "새절") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/7.gif <% } %>">
+                                    <map name="image-map7">
+                                        <area alt="새절" coords="80,244,112,270" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=8 style="position: relative;"><img usemap="#image-map8" src="<% if (data[i].station_name === "증산") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/8.gif <% } %>">
+                                    <map name="image-map8">
+                                        <area alt="증산" coords="80,294,112,320" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=9 style="position: relative;"><img usemap="#image-map9" src="<% if (data[i].station_name === "디지털미디어") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/9.gif <% } %>">
+                                    <map name="image-map9">
+                                        <area alt="디지털미디어" coords="80,354,112,380" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=10 style="position: relative;"><img usemap="#image-map10" src="<% if (data[i].station_name === "월드컵경기장") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/10.gif <% } %>">
+                                    <map name="image-map10">
+                                        <area alt="월드컵경기장" coords="80,454,112,480" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=11 style="position: relative;"><img usemap="#image-map11" src="<% if (data[i].station_name === "마포구청") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/11.gif <% } %>">
+                                    <map name="image-map11">
+                                        <area alt="마포구청" coords="80,536,112,562" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=12 style="position: relative;"><img usemap="#image-map12" src="<% if (data[i].station_name === "망원") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/12.gif <% } %>">
+                                    <map name="image-map12">
+                                        <area alt="망원" coords="101,621,133,647" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=13 style="position: relative;"><img usemap="#image-map13" src="<% if (data[i].station_name === "합정") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/13.gif <% } %>">
+                                    <map name="image-map13">
+                                        <area alt="합정" coords="174,633,206,659" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=14 style="position: relative;"><img usemap="#image-map14" src="<% if (data[i].station_name === "상수") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/14.gif <% } %>">
+                                    <map name="image-map14">
+                                        <area alt="상수" coords="219,635,251,661" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=15 style="position: relative;"><img usemap="#image-map15" src="<% if (data[i].station_name === "광흥창") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/15.gif <% } %>">
+                                    <map name="image-map15">
+                                        <area alt="광흥창" coords="264,634,296,660" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=16 style="position: relative;"><img usemap="#image-map16" src="<% if (data[i].station_name === "대흥") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/16.gif <% } %>">
+                                    <map name="image-map16">
+                                        <area alt="대흥" coords="313,634,345,660" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=17 style="position: relative;"><img usemap="#image-map17" src="<% if (data[i].station_name === "공덕") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/17.gif <% } %>">
+                                    <map name="image-map17">
+                                        <area alt="공덕" coords="362,623,394,649" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=18 style="position: relative;"><img usemap="#image-map18" src="<% if (data[i].station_name === "효창공원") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/18.gif <% } %>">
+                                    <map name="image-map18">
+                                        <area alt="효창공원" coords="402,635,434,661" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=19 style="position: relative;"><img usemap="#image-map19" src="<% if (data[i].station_name === "삼각지") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/19.gif <% } %>">
+                                    <map name="image-map19">
+                                        <area alt="삼각지" coords="552,636,584,662" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=20 style="position: relative;"><img usemap="#image-map20" src="<% if (data[i].station_name === "녹사평") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/20.gif <% } %>">
+                                    <map name="image-map20">
+                                        <area alt="녹사평" coords="617,636,649,662" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=21 style="position: relative;"><img usemap="#image-map21" src="<% if (data[i].station_name === "이태원") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/21.gif <% } %>">
+                                    <map name="image-map21">
+                                        <area alt="이태원" title="이태원" coords="659,636,686,660" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=22 style="position: relative;"><img usemap="#image-map22" src="<% if (data[i].station_name === "한강진") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/22.gif <% } %>">
+                                    <map name="image-map22">
+                                        <area alt="한강진" coords="687,638,719,664" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=23 style="position: relative;"><img usemap="#image-map23" src="<% if (data[i].station_name === "버티고개") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/23.gif <% } %>">
+                                    <map name="image-map23">
+                                        <area alt="버티고개" coords="719,629,751,655" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=24 style="position: relative;"><img usemap="#image-map24" src="<% if (data[i].station_name === "약수") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/24.gif <% } %>">
+                                    <map name="image-map24">
+                                        <area alt="약수" coords="747,573,779,599" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=25 style="position: relative;"><img usemap="#image-map25" src="<% if (data[i].station_name === "청구") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/25.gif <% } %>">
+                                    <map name="image-map25">
+                                        <area alt="청구" coords="750,469,782,495" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=26 style="position: relative;"><img usemap="#image-map26" src="<% if (data[i].station_name === "신당") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/26.gif <% } %>">
+                                    <map name="image-map26">
+                                        <area alt="신당" coords="750,419,782,445" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=27 style="position: relative;"><img usemap="#image-map27" src="<% if (data[i].station_name === "동묘앞") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/27.gif <% } %>">
+                                    <map name="image-map27">
+                                        <area alt="동묘앞" coords="750,327,782,353" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=28 style="position: relative;"><img usemap="#image-map28" src="<% if (data[i].station_name === "창신") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/28.gif <% } %>">
+                                    <map name="image-map28">
+                                        <area alt="창신" coords="751,261,783,287" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=29 style="position: relative;"><img usemap="#image-map29" src="<% if (data[i].station_name === "보문") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/29.gif <% } %>">
+                                    <map name="image-map29">
+                                        <area alt="보문" coords="791,233,823,259" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=30 style="position: relative;"><img usemap="#image-map30" src="<% if (data[i].station_name === "안암") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/30.gif <% } %>">
+                                    <map name="image-map30">
+                                        <area alt="안암" coords="864,231,896,257" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=31 style="position: relative;"><img usemap="#image-map31" src="<% if (data[i].station_name === "고려대") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/31.gif <% } %>" >
+                                    <map name="image-map31">
+                                        <area alt="고려대" coords="925,231,957,257" shape="rect" onclick=btn2();>
+                                    </map></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=32 style="position: relative;"><img usemap="#image-map32" src="<% if (data[i].station_name === "월곡") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/32.gif <% } %>">
+                                    <map name="image-map32">
+                                        <area alt="월곡" coords="987,229,1019,255" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=33 style="position: relative;"><img usemap="#image-map33" src="<% if (data[i].station_name === "상월곡") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/33.gif <% } %>">
+                                    <map name="image-map33">
+                                        <area alt="상월곡" coords="1046,229,1078,255" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=34 style="position: relative;"><img usemap="#image-map34" src="<% if (data[i].station_name === "돌곶이") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/34.gif <% } %>">
+                                    <map name="image-map34">
+                                        <area alt="돌곶이" coords="1110,233,1142,259" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=35 style="position: relative;"><img usemap="#image-map35" src="<% if (data[i].station_name === "석계") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/35.gif <% } %>">
+                                    <map name="image-map35">
+                                        <area alt="석계" coords="1200,233,1232,259" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=36 style="position: relative;"><img usemap="#image-map36" src="<% if (data[i].station_name === "태릉입구") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/36.gif <% } %>">
+                                    <map name="image-map36">
+                                        <area alt="태릉입구" coords="1322,235,1354,261" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=37 style="position: relative;"><img usemap="#image-map37" src="<% if (data[i].station_name === "화랑대") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/37.gif <% } %>">
+                                    <map name="image-map37">
+                                        <area alt="화랑대" coords="1388,236,1420,262" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=38 style="position: relative;"><img usemap="#image-map38" src="<% if (data[i].station_name === "봉화산") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/38.gif <% } %>">
+                                    <map name="image-map38">
+                                        <area alt="봉화산" coords="1405,285,1437,311" shape="rect" onclick=btn2();></div>
+                              </div>
+                              <div style="position: absolute;">
+                                  <div id=39 style="position: relative;"><img usemap="#image-map39" src="<% if (data[i].station_name === "신내") {
+                                    %> https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/nodes/39.gif <% } %>">
+                                    <map name="image-map39">
+                                        <area alt="신내" coords="1405,335,1437,361" shape="rect" onclick=btn2();></div>
+                              </div>
+                         <% } %>
+                        <img src="https://nonstopbebe.s3.ap-northeast-2.amazonaws.com/metro2.png"></img>
+                    </div>
+            </body>
+        </div>
+    </div>
+</body>
+
+
+</html>
